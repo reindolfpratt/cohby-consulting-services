@@ -1,1 +1,3 @@
-/*  /index.html  200
+git add .
+git commit -m "Add redirects for Netlify"
+git push
