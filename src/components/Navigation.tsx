@@ -32,7 +32,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2 transition-opacity hover:opacity-80">
             <div className="flex items-center gap-3">
               <img src={cohbyLogo} alt="Cohby Consulting Services" className="h-12 w-12 object-contain" />
-              <span className="text-xl font-bold hidden sm:inline">Cohby Consulting</span>
+              <span className="text-xl font-bold hidden sm:inline">Cohby Consulting Services</span>
             </div>
           </Link>
 
