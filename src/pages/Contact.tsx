@@ -57,10 +57,10 @@ const Contact = () => {
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Email</h3>
                 <a
-                  href="mailto:info@cohbyconsult.com"
+                  href="mailto:info@cohbyconsultingservices.com"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  info@cohbyconsult.com
+                  info@cohbyconsultingservices.com
                 </a>
               </CardContent>
             </Card>
