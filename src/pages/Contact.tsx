@@ -1,7 +1,22 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect } from "react";
 
 const Contact = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://form.jotform.com/jsform/251077501258050';
+    script.type = 'text/javascript';
+    document.getElementById('jotform-container')?.appendChild(script);
+    
+    return () => {
+      const container = document.getElementById('jotform-container');
+      if (container) {
+        container.innerHTML = '';
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -70,12 +85,7 @@ const Contact = () => {
             <Card>
               <CardContent className="p-8">
                 <h2 className="text-2xl font-bold mb-6 text-center">Send Us a Message</h2>
-                <div className="w-full">
-                  <script
-                    type="text/javascript"
-                    src="https://form.jotform.com/jsform/251077501258050"
-                  ></script>
-                </div>
+                <div id="jotform-container" className="w-full"></div>
               </CardContent>
             </Card>
           </div>
