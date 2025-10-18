@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import cohbyLogo from "@/assets/cohby-logo.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -29,11 +30,9 @@ const Navigation = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 transition-opacity hover:opacity-80">
-            <div className="flex items-center gap-2">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-xl font-bold text-white">C</span>
-              </div>
-              <span className="text-xl font-bold">Cohby Consulting</span>
+            <div className="flex items-center gap-3">
+              <img src={cohbyLogo} alt="Cohby Consulting Services" className="h-12 w-12 object-contain" />
+              <span className="text-xl font-bold hidden sm:inline">Cohby Consulting</span>
             </div>
           </Link>
 

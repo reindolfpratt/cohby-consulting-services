@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import cohbyLogo from "@/assets/cohby-logo.png";
 
 const Footer = () => {
   return (
@@ -8,10 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="h-10 w-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                <span className="text-xl font-bold">C</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <img src={cohbyLogo} alt="Cohby Consulting Services" className="h-12 w-12 object-contain" />
               <span className="text-lg font-bold">Cohby Consulting</span>
             </div>
             <p className="text-sm text-white/80">

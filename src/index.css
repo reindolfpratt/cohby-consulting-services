@@ -17,37 +17,37 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 40% 12%;
 
-    --primary: 192 88% 35%;
+    --primary: 210 100% 20%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 188 95% 52%;
-    --secondary-foreground: 210 40% 12%;
+    --secondary: 207 65% 48%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 20% 92%;
     --muted-foreground: 210 15% 45%;
 
-    --accent: 186 100% 58%;
-    --accent-foreground: 210 40% 12%;
+    --accent: 207 70% 54%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 210 20% 88%;
     --input: 210 20% 88%;
-    --ring: 192 88% 35%;
+    --ring: 210 100% 20%;
 
     --radius: 0.75rem;
 
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(192, 88%, 35%), hsl(186, 100%, 58%));
-    --gradient-hero: linear-gradient(135deg, hsl(192, 88%, 28%), hsl(192, 88%, 35%), hsl(188, 95%, 52%));
-    --gradient-accent: linear-gradient(90deg, hsl(188, 95%, 52%), hsl(186, 100%, 58%));
+    /* Custom gradients matching logo navy-to-blue */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 100%, 20%), hsl(207, 65%, 48%));
+    --gradient-hero: linear-gradient(135deg, hsl(210, 100%, 15%), hsl(210, 100%, 20%), hsl(207, 65%, 48%));
+    --gradient-accent: linear-gradient(90deg, hsl(207, 65%, 48%), hsl(207, 70%, 54%));
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(192 88% 35% / 0.1);
-    --shadow-md: 0 4px 16px -4px hsl(192 88% 35% / 0.15);
-    --shadow-lg: 0 12px 32px -8px hsl(192 88% 35% / 0.2);
-    --shadow-glow: 0 0 32px hsl(186 100% 58% / 0.3);
+    --shadow-sm: 0 2px 8px -2px hsl(210 100% 20% / 0.1);
+    --shadow-md: 0 4px 16px -4px hsl(210 100% 20% / 0.15);
+    --shadow-lg: 0 12px 32px -8px hsl(210 100% 20% / 0.2);
+    --shadow-glow: 0 0 32px hsl(207 65% 48% / 0.3);
     
     /* Transitions */
     --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,24 +64,24 @@ All colors MUST be HSL.
     --popover: 210 40% 12%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 188 95% 52%;
-    --primary-foreground: 210 40% 12%;
+    --primary: 207 65% 48%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 192 88% 35%;
+    --secondary: 210 100% 20%;
     --secondary-foreground: 210 20% 98%;
 
     --muted: 210 40% 18%;
     --muted-foreground: 210 15% 65%;
 
-    --accent: 186 100% 58%;
-    --accent-foreground: 210 40% 12%;
+    --accent: 207 70% 54%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 98%;
 
     --border: 210 40% 18%;
     --input: 210 40% 18%;
-    --ring: 188 95% 52%;
+    --ring: 207 65% 48%;
   }
 }
 
