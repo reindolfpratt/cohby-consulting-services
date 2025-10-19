@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => {
   const isDev = mode === "development";
   return {
-    base: isDev ? "/" : "/cohby-consulting-services/",
+    base: "/",
     server: { host: "::", port: 8080 },
     plugins: [react(), isDev && componentTagger()].filter(Boolean),
     resolve: {
