@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t border-white/10 text-center text-sm text-white-60">
-          <p>&copy; {(new Date().getFullYear()} Cohby Consulting Services. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Cohby Consulting Services. All rights reserved.</p>
         </div>
       </div>
   </footer>
