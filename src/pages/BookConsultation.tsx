@@ -98,10 +98,10 @@ const BookConsultation = () => {
                       <div className="pt-4 border-t">
                         <p className="font-semibold mb-1">Email</p>
                         <a
-                          href="mailto:info@cohbyconsult.com"
+                          href="mailto:info@cohbyconsultingservices.com"
                           className="text-primary hover:text-primary/80 transition-colors"
                         >
-                          info@cohbyconsult.com
+                          info@cohbyconsultingservices.com
                         </a>
                       </div>
                     </div>
