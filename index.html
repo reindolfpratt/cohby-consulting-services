@@ -34,10 +34,117 @@
     <meta name="twitter:title" content="Cohby Consulting Services | Cloud Solutions, AI & Data Consulting" />
     <meta name="twitter:description" content="Expert Cloud Architecture, AI Engineering, Data Analysis, and Salesforce implementation services." />
     <meta name="twitter:image" content="https://cohbyconsultingservices.com/og-image.png" />
+
+    <style>
+      /* ── Boot loader — lives in static HTML so it paints instantly,
+             long before the JS bundle arrives. React replaces it on mount. ── */
+      html, body { margin: 0; background: hsl(240, 10%, 3.5%); }
+
+      .boot-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        background:
+          radial-gradient(ellipse at 50% 30%, hsl(237, 45%, 10%) 0%, hsl(240, 10%, 3.5%) 70%);
+        z-index: 9999;
+        overflow: hidden;
+      }
+
+      /* Twinkling stars, drawn with box-shadows — no images needed */
+      .boot-stars,
+      .boot-stars::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: transparent;
+        box-shadow:
+          8vw 12vh 0 rgba(255,255,255,0.55), 22vw 68vh 0 rgba(255,255,255,0.35),
+          34vw 25vh 0 rgba(255,255,255,0.5), 47vw 82vh 0 rgba(255,255,255,0.3),
+          58vw 15vh 0 rgba(255,255,255,0.45), 69vw 55vh 0 rgba(255,255,255,0.35),
+          81vw 30vh 0 rgba(255,255,255,0.5), 91vw 74vh 0 rgba(255,255,255,0.4),
+          15vw 45vh 0 rgba(255,255,255,0.3), 76vw 90vh 0 rgba(255,255,255,0.45);
+        animation: boot-twinkle 2.4s ease-in-out infinite;
+      }
+      .boot-stars::after {
+        box-shadow:
+          12vw 85vh 0 rgba(255,255,255,0.4), 28vw 8vh 0 rgba(255,255,255,0.3),
+          42vw 60vh 0 rgba(255,255,255,0.5), 55vw 38vh 0 rgba(255,255,255,0.3),
+          64vw 78vh 0 rgba(255,255,255,0.45), 88vw 12vh 0 rgba(255,255,255,0.35),
+          95vw 48vh 0 rgba(255,255,255,0.3), 5vw 65vh 0 rgba(255,255,255,0.4);
+        animation-delay: -1.2s;
+      }
+
+      /* Comet orbiting a faint ring */
+      .boot-orbit {
+        position: relative;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        animation: boot-spin 1.1s linear infinite;
+      }
+      .boot-comet {
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-left: -4px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow:
+          0 0 12px 3px hsla(200, 95%, 70%, 0.85),
+          0 0 32px 10px hsla(200, 90%, 60%, 0.35);
+      }
+      /* Trailing glow behind the comet */
+      .boot-comet::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        width: 30px;
+        height: 2px;
+        margin-top: -1px;
+        border-radius: 2px;
+        background: linear-gradient(270deg, hsla(200, 95%, 75%, 0.7), transparent);
+      }
+
+      .boot-wordmark {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 11px;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+        text-align: center;
+        animation: boot-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes boot-spin { to { transform: rotate(360deg); } }
+      @keyframes boot-pulse { 0%, 100% { opacity: 0.85; } 50% { opacity: 0.35; } }
+      @keyframes boot-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+      @media (prefers-reduced-motion: reduce) {
+        .boot-orbit { animation: none; }
+        .boot-stars, .boot-stars::after { animation: none; }
+        .boot-wordmark { animation: boot-pulse 3s ease-in-out infinite; }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="boot-loader" role="status" aria-label="Loading Cohby Consulting">
+        <div class="boot-stars"></div>
+        <div class="boot-orbit"><div class="boot-comet"></div></div>
+        <div class="boot-wordmark">Cohby Consulting</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
