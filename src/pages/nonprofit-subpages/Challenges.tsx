@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 const Challenges = () => {
   const challenges = [
@@ -24,20 +24,19 @@ const Challenges = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       <section className="relative min-h-[45vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[45%] h-[55%] rounded-t-[12rem] border-t border-x border-white/[0.06] bg-white/[0.01] backdrop-blur-[14px] z-0 pointer-events-none" />
-        <div className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
-          <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
+        <RevealGroup className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
+          <RevealItem><h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
             Impact<br />
             <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">challenges</span>
-          </h1>
-          <p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
+          </h1></RevealItem>
+          <RevealItem><p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
             Top 3 challenges non-profits face, and how Salesforce solves them.
-          </p>
-        </div>
+          </p></RevealItem>
+        </RevealGroup>
       </section>
 
       <div className="h-24 w-full pointer-events-none" style={{background:"linear-gradient(180deg, hsl(240,10%,4%) 0%, #f0ede9 100%)"}} />

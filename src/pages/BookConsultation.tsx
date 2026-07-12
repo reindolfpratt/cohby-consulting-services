@@ -1,5 +1,5 @@
 import { Phone, Mail, ArrowUpRight } from "lucide-react";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 const BookConsultation = () => {
   const benefits = [
@@ -11,21 +11,24 @@ const BookConsultation = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       {/* ── Hero — Dark ── */}
       <section className="relative min-h-[45vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[45%] h-[55%] rounded-t-[12rem] border-t border-x border-white/[0.06] bg-white/[0.01] backdrop-blur-[14px] z-0 pointer-events-none" />
-        <div className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
-          <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
-            Book Your<br />
-            <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">consultation</span>
-          </h1>
-          <p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
-            30 minutes that could transform your business technology architecture.
-          </p>
-        </div>
+        <RevealGroup className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
+          <RevealItem>
+            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
+              Book Your<br />
+              <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">consultation</span>
+            </h1>
+          </RevealItem>
+          <RevealItem>
+            <p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
+              30 minutes that could transform your business technology architecture.
+            </p>
+          </RevealItem>
+        </RevealGroup>
       </section>
 
       {/* ── Gradient Transition ── */}
@@ -39,15 +42,15 @@ const BookConsultation = () => {
         <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
 
           {/* Header */}
-          <div className="pb-12 border-b studio-rule flex items-baseline justify-between">
+          <Reveal y={16} className="pb-12 border-b studio-rule flex items-baseline justify-between">
             <h2 className="studio-heading text-3xl md:text-4xl">Free Consultation</h2>
             <span className="studio-label">30 min · No obligation</span>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
 
             {/* Left — What to expect */}
-            <div className="lg:col-span-6 space-y-12">
+            <RevealItem className="lg:col-span-6 space-y-12">
 
               <div>
                 <h3 className="text-xl font-black text-[#121214] uppercase tracking-tight mb-4">What to Expect</h3>
@@ -74,10 +77,10 @@ const BookConsultation = () => {
                   "We believe in building long-term partnerships, not making quick sales. If we are not the right fit, we will tell you. If we can help, we will show you exactly how."
                 </p>
               </div>
-            </div>
+            </RevealItem>
 
             {/* Right — Schedule Card */}
-            <div className="lg:col-span-6">
+            <RevealItem className="lg:col-span-6">
               <div className="bg-white border border-black/[0.08] rounded-2xl p-8 md:p-10 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
                 <h3 className="text-2xl font-black text-[#121214] mb-2 uppercase tracking-tight">Schedule Your Call</h3>
                 <p className="text-sm text-black/45 mb-10 leading-relaxed">
@@ -146,9 +149,9 @@ const BookConsultation = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </RevealItem>
 
-          </div>
+          </RevealGroup>
         </div>
       </section>
     </div>

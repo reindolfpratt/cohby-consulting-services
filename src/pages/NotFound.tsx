@@ -1,7 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
 
 const NotFound = () => {
   const location = useLocation();
@@ -11,8 +10,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30 flex flex-col">
-      <LiquidGlassBackground variant="hero" />
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30 flex flex-col">
 
       {/* Dark full-screen center */}
       <div className="flex-1 flex items-center justify-center p-4 relative z-10">

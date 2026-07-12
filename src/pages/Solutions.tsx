@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, LayoutGrid, Cloud, ShieldCheck, Database, Sliders } from "lucide-react";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import Magnetic from "@/components/motion/Magnetic";
 
 const Solutions = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -117,11 +118,10 @@ const Solutions = () => {
     : solutions.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       {/* ── Hero — Dark Section ── */}
       <section className="relative min-h-[65vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
 
         {/* Frosted arch window */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[75%] md:w-[55%] h-[55%] rounded-t-[14rem] border-t border-x border-white/[0.07] bg-white/[0.012] backdrop-blur-[16px] shadow-[inset_0_2px_20px_rgba(255,255,255,0.04)] z-0 pointer-events-none" />
@@ -135,16 +135,22 @@ const Solutions = () => {
         </div>
 
         <div className="container relative mx-auto px-4 md:px-8 z-10 pb-28 pt-40 max-w-7xl">
-          <div className="max-w-3xl animate-slide-up">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-rose font-mono mb-6 block">// Portfolio</span>
-            <h1 className="text-6xl md:text-8xl font-black mb-6 text-white uppercase tracking-tight leading-[0.9]">
-              Selected<br />
-              <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">solutions</span>
-            </h1>
-            <p className="text-base text-white/45 leading-relaxed max-w-md">
-              Enterprise digital engineering designed to automate, scale, and transform.
-            </p>
-          </div>
+          <RevealGroup className="max-w-3xl">
+            <RevealItem>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-rose font-mono mb-6 block">// Portfolio</span>
+            </RevealItem>
+            <RevealItem>
+              <h1 className="text-6xl md:text-8xl font-black mb-6 text-white uppercase tracking-tight leading-[0.9]">
+                Selected<br />
+                <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">solutions</span>
+              </h1>
+            </RevealItem>
+            <RevealItem>
+              <p className="text-base text-white/45 leading-relaxed max-w-md">
+                Enterprise digital engineering designed to automate, scale, and transform.
+              </p>
+            </RevealItem>
+          </RevealGroup>
         </div>
       </section>
 
@@ -181,21 +187,21 @@ const Solutions = () => {
 
         {/* Project Count */}
         <div className="container mx-auto px-4 md:px-8 max-w-6xl pt-14 pb-4">
-          <div className="flex items-baseline justify-between border-b border-black/[0.08] pb-6">
+          <Reveal y={16} className="flex items-baseline justify-between border-b border-black/[0.08] pb-6">
             <h2 className="studio-heading text-4xl md:text-5xl">
               {activeCategory === "All" ? "All Work" : activeCategory}
             </h2>
             <span className="studio-label">
               {String(filteredSolutions.length).padStart(2, "0")} projects
             </span>
-          </div>
+          </Reveal>
         </div>
 
         {/* Project Cards Grid */}
         <div className="container mx-auto px-4 md:px-8 max-w-6xl py-10 pb-28">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+          <RevealGroup className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
             {filteredSolutions.map((solution, i) => (
-              <div
+              <RevealItem
                 key={solution.title}
                 className="studio-card group cursor-pointer"
               >
@@ -247,14 +253,14 @@ const Solutions = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
 
         {/* CTA Block inside light section */}
         <div className="container mx-auto px-4 md:px-8 max-w-6xl pb-32">
-          <div className="studio-cta-block p-14 md:p-20 text-center relative overflow-hidden">
+          <Reveal className="studio-cta-block p-14 md:p-20 text-center relative overflow-hidden">
             {/* subtle noise texture */}
             <div className="absolute inset-0 opacity-[0.015] pointer-events-none" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"}} />
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-white/40 block mb-6">// Next Step</span>
@@ -265,13 +271,15 @@ const Solutions = () => {
             <p className="text-base text-white/50 max-w-md mx-auto mb-10 leading-relaxed">
               Let's build custom Salesforce, Cloud, or AI solutions tailored for your organisation.
             </p>
-            <Link
-              to="/book-consultation"
-              className="inline-flex items-center gap-3 bg-white text-black font-mono text-xs uppercase tracking-wider px-8 py-4 rounded-full hover:bg-rose transition-colors duration-300 font-semibold"
-            >
-              Book Consultation <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
+            <Magnetic>
+              <Link
+                to="/book-consultation"
+                className="inline-flex items-center gap-3 bg-white text-black font-mono text-xs uppercase tracking-wider px-8 py-4 rounded-full hover:bg-rose transition-colors duration-300 font-semibold press"
+              >
+                Book Consultation <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Magnetic>
+          </Reveal>
         </div>
       </section>
     </div>

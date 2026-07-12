@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import {
   Video,
   Megaphone,
@@ -7,7 +8,6 @@ import {
   LayoutGrid,
   ArrowRight
 } from "lucide-react";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
 
 const CohbyLearn = () => {
   const features = [
@@ -61,22 +61,21 @@ const CohbyLearn = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       {/* ── Hero — Dark ── */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[45%] h-[55%] rounded-t-[12rem] border-t border-x border-white/[0.06] bg-white/[0.01] backdrop-blur-[14px] z-0 pointer-events-none" />
         <div className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-8">
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <RevealItem className="lg:col-span-8">
               <span className="text-xs uppercase tracking-[0.2em] text-rose font-mono mb-4 block">// Cohby Academy System</span>
               <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
                 Cohby<br />
                 Learn <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">platform</span>.
               </h1>
-            </div>
-            <div className="lg:col-span-4 lg:pb-2 flex flex-col gap-8">
+            </RevealItem>
+            <RevealItem className="lg:col-span-4 lg:pb-2 flex flex-col gap-8">
               <p className="text-base text-white/45 leading-relaxed">
                 The AI-driven, multi-tenant LMS built for creators, corporations, and educators.
               </p>
@@ -88,11 +87,11 @@ const CohbyLearn = () => {
               >
                 Start Free Trial →
               </a>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
 
           {/* Platform mockup — real product screenshot */}
-          <div className="mt-16 w-full relative z-10">
+          <Reveal className="mt-16 w-full relative z-10">
             <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.02] backdrop-blur-md overflow-hidden p-3 shadow-[0_32px_80px_rgba(0,0,0,0.5)]">
               {/* Browser chrome bar */}
               <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.06] mb-1">
@@ -113,7 +112,7 @@ const CohbyLearn = () => {
                 <div className="absolute inset-0 rounded-[1.7rem] bg-rose/[0] group-hover:bg-rose/[0.03] transition-colors duration-300 pointer-events-none" />
               </a>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -127,14 +126,14 @@ const CohbyLearn = () => {
         <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
 
           {/* Why Cohby Learn */}
-          <div className="pb-12 border-b studio-rule flex items-baseline justify-between">
+          <Reveal y={16} className="pb-12 border-b studio-rule flex items-baseline justify-between">
             <h2 className="studio-heading text-3xl md:text-4xl">Why Cohby Learn?</h2>
             <span className="studio-label">System Features</span>
-          </div>
+          </Reveal>
 
-          <div className="border-b studio-rule">
+          <RevealGroup className="border-b studio-rule">
             {features.map((f, i) => (
-              <div key={i} className="grid grid-cols-1 lg:grid-cols-12 py-10 border-t studio-rule items-start group hover:bg-black/[0.015] transition-colors duration-300">
+              <RevealItem key={i} className="grid grid-cols-1 lg:grid-cols-12 py-10 border-t studio-rule items-start group hover:bg-black/[0.015] transition-colors duration-300">
                 <div className="lg:col-span-2 studio-label mb-3 lg:mb-0 lg:pt-1">{f.category}</div>
                 <div className="lg:col-span-4 pr-6 mb-4 lg:mb-0">
                   <h3 className="text-xl font-black text-[#121214] group-hover:text-rose transition-colors mb-3 uppercase tracking-tight">{f.title}</h3>
@@ -149,13 +148,13 @@ const CohbyLearn = () => {
                     {f.icon}
                   </div>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
 
           {/* Modular blocks + preview */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-b studio-rule py-16">
-            <div>
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-b studio-rule py-16">
+            <RevealItem>
               <h3 className="studio-heading text-2xl mb-4">Modular Course Building Blocks</h3>
               <p className="text-sm text-black/50 leading-relaxed mb-8">
                 Courses are more than just text. Cohby Learn uses a modular "Block" system that allows for rich, interactive curriculum design.
@@ -168,10 +167,10 @@ const CohbyLearn = () => {
                   </div>
                 ))}
               </div>
-            </div>
+            </RevealItem>
 
             {/* Course block UI mockup */}
-            <div>
+            <RevealItem>
               <h3 className="studio-heading text-2xl mb-4">Course Block Preview</h3>
               <div className="bg-white border border-black/[0.07] rounded-2xl p-6 shadow-[0_2px_20px_rgba(0,0,0,0.04)] space-y-3">
                 {[
@@ -191,28 +190,28 @@ const CohbyLearn = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
 
           {/* Security */}
           <div className="py-16 border-b studio-rule">
-            <div className="flex items-baseline justify-between mb-12">
+            <Reveal y={16} className="flex items-baseline justify-between mb-12">
               <h2 className="studio-heading text-3xl">Bank-Level Security</h2>
               <span className="studio-label">Data Isolation</span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            </Reveal>
+            <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {security.map((s, i) => (
-                <div key={i} className="group">
+                <RevealItem key={i} className="group">
                   <span className="studio-label mb-3 block">Security Layer 0{i + 1}</span>
                   <h3 className="text-lg font-black text-[#121214] mb-3 group-hover:text-rose transition-colors uppercase tracking-tight">{s.title}</h3>
                   <p className="text-sm text-black/50 leading-relaxed">{s.desc}</p>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </div>
 
           {/* CTA */}
-          <div className="pt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <Reveal className="pt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-black text-[#121214] uppercase tracking-tight mb-2">Build Your Academy.</h3>
               <p className="text-sm text-black/45 max-w-md leading-relaxed">Start creating courses today with the AI Architect. No credit card required for trial organisations.</p>
@@ -233,7 +232,7 @@ const CohbyLearn = () => {
                 Contact Sales
               </Link>
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </section>

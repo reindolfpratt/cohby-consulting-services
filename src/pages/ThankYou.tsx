@@ -1,11 +1,9 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
 
 const ThankYou = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30 flex flex-col">
-      <LiquidGlassBackground variant="hero" />
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30 flex flex-col">
 
       <div className="flex-1 flex items-center justify-center p-4 relative z-10">
         <div className="max-w-md w-full text-center space-y-8 animate-fade-in p-10 md:p-14 bg-white/[0.03] border border-white/[0.08] shadow-2xl rounded-3xl backdrop-blur-md">

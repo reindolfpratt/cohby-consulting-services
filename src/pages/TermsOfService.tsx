@@ -1,12 +1,10 @@
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
 
 const TermsOfService = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       {/* Hero */}
       <section className="relative min-h-[40vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="container relative mx-auto px-4 md:px-8 z-10 pb-16 pt-36 max-w-7xl">
           <span className="text-xs uppercase tracking-[0.2em] text-rose font-mono mb-4 block">// Legal</span>
           <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tight leading-[0.9]">

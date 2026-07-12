@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Gift, Users, TrendingUp } from "lucide-react";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
+import { Reveal, RevealGroup, RevealItem, WordsReveal } from "@/components/motion/Reveal";
 
 const NonProfits = () => {
   const benefits = [
@@ -37,20 +37,19 @@ const NonProfits = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       <section className="relative min-h-[85vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[45%] h-[55%] rounded-t-[12rem] border-t border-x border-white/[0.06] bg-white/[0.01] backdrop-blur-[14px] z-0 pointer-events-none" />
         <div className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-8">
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <RevealItem className="lg:col-span-8">
               <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
                 Tech for<br />Your<br />
                 Mission <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">outcomes</span>.
               </h1>
-            </div>
-            <div className="lg:col-span-4 lg:pb-2 flex flex-col gap-8">
+            </RevealItem>
+            <RevealItem className="lg:col-span-4 lg:pb-2 flex flex-col gap-8">
               <p className="text-base text-white/45 leading-relaxed">
                 Maximise your impact with powerful, affordable Salesforce solutions designed specifically for non-profit organisations.
               </p>
@@ -60,8 +59,8 @@ const NonProfits = () => {
               >
                 Book Consultation →
               </Link>
-            </div>
-          </div>
+            </RevealItem>
+          </RevealGroup>
         </div>
       </section>
 
@@ -72,16 +71,16 @@ const NonProfits = () => {
         <div className="studio-pillar-right" aria-hidden="true" />
         <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
 
-          <div className="pb-12 border-b studio-rule">
+          <Reveal y={16} className="pb-12 border-b studio-rule">
             <h2 className="studio-heading text-3xl md:text-4xl mb-4">Technology That Amplifies Your Mission</h2>
             <p className="text-sm text-black/50 max-w-2xl leading-relaxed">
               Running a non-profit is challenging enough without worrying about complex, expensive technology. We specialise in helping non-profits leverage Salesforce's powerful tools at little to no licence cost, so you can focus entirely on making a difference.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="border-b studio-rule">
+          <RevealGroup className="border-b studio-rule">
             {benefits.map((benefit, index) => (
-              <div key={index} className="grid grid-cols-1 lg:grid-cols-12 py-10 border-t studio-rule items-start group hover:bg-black/[0.015] transition-colors duration-300">
+              <RevealItem key={index} className="grid grid-cols-1 lg:grid-cols-12 py-10 border-t studio-rule items-start group hover:bg-black/[0.015] transition-colors duration-300">
                 <div className="lg:col-span-2 studio-label mb-3 lg:mb-0 lg:pt-1">{benefit.category}</div>
                 <div className="lg:col-span-9 pr-8 mb-5 lg:mb-0">
                   <h3 className="text-xl font-black text-[#121214] group-hover:text-rose transition-colors mb-3 uppercase tracking-tight">{benefit.title}</h3>
@@ -97,27 +96,27 @@ const NonProfits = () => {
                     </div>
                   </Link>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
 
           {/* Why Salesforce */}
           <div className="pt-20 pb-8">
             <p className="text-4xl md:text-5xl font-black text-[#121214] uppercase tracking-tight leading-tight max-w-3xl mb-16">
-              Why Salesforce? Build donor trust, volunteer engagement, and grant transparency through cloud systems.
+              <WordsReveal text="Why Salesforce? Build donor trust, volunteer engagement, and grant transparency through cloud systems." />
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-t studio-rule pt-10">
+            <RevealGroup className="grid grid-cols-1 md:grid-cols-3 gap-10 border-t studio-rule pt-10">
               {points.map((item, i) => (
-                <div key={i} className="group">
+                <RevealItem key={i} className="group">
                   <span className="text-xs font-mono text-black/25 block mb-3">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="text-lg font-black text-[#121214] mb-2 group-hover:text-rose transition-colors uppercase tracking-tight">{item.title}</h3>
                   <p className="text-sm text-black/50 leading-relaxed">{item.desc}</p>
-                </div>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </div>
 
-          <div className="border-t studio-rule pt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <Reveal className="border-t studio-rule pt-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-black text-[#121214] uppercase tracking-tight mb-2">Ready to Upgrade?</h3>
               <p className="text-sm text-black/45 max-w-md leading-relaxed">Let's discuss how Salesforce can help you achieve more with less.</p>
@@ -136,7 +135,7 @@ const NonProfits = () => {
                 Contact Us
               </Link>
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </section>

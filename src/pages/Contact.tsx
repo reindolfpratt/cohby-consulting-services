@@ -1,24 +1,27 @@
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-import LiquidGlassBackground from "@/components/LiquidGlassBackground";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden selection:bg-rose/30">
+    <div className="min-h-screen overflow-x-hidden selection:bg-rose/30">
 
       {/* ── Hero — Dark ── */}
       <section className="relative min-h-[45vh] flex items-end overflow-hidden z-10 border-b border-white/[0.06]">
-        <LiquidGlassBackground variant="hero" />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] md:w-[45%] h-[55%] rounded-t-[12rem] border-t border-x border-white/[0.06] bg-white/[0.01] backdrop-blur-[14px] z-0 pointer-events-none" />
-        <div className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
-          <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
-            Get in<br />
-            <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">touch</span>
-          </h1>
-          <p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
-            Let's discuss how we can help your business thrive.
-          </p>
-        </div>
+        <RevealGroup className="container relative mx-auto px-4 md:px-8 z-10 pb-20 pt-40 max-w-7xl">
+          <RevealItem>
+            <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tight leading-[0.9]">
+              Get in<br />
+              <span className="text-rose font-extrabold italic font-serif lowercase tracking-wide">touch</span>
+            </h1>
+          </RevealItem>
+          <RevealItem>
+            <p className="text-base text-white/45 mt-6 max-w-md leading-relaxed">
+              Let's discuss how we can help your business thrive.
+            </p>
+          </RevealItem>
+        </RevealGroup>
       </section>
 
       {/* ── Body — Light Clay ── */}
@@ -31,15 +34,15 @@ const Contact = () => {
         <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
 
           {/* Section Header */}
-          <div className="pb-12 border-b studio-rule flex items-baseline justify-between">
+          <Reveal y={16} className="pb-12 border-b studio-rule flex items-baseline justify-between">
             <h2 className="studio-heading text-3xl md:text-4xl">Contact Us</h2>
             <span className="studio-label">We respond within 24h</span>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
+          <RevealGroup className="grid grid-cols-1 lg:grid-cols-12 gap-16 pt-16">
 
             {/* Left — Contact Details */}
-            <div className="lg:col-span-4 space-y-10">
+            <RevealItem className="lg:col-span-4 space-y-10">
 
               <div className="flex gap-5 items-start group">
                 <div className="w-10 h-10 rounded-full border border-black/[0.12] flex items-center justify-center flex-shrink-0 group-hover:border-black/30 group-hover:bg-[#121214] group-hover:text-white transition-all duration-300">
@@ -96,10 +99,10 @@ const Contact = () => {
                   "We believe in building long-term partnerships, not making quick sales. If we are not the right fit, we will tell you."
                 </p>
               </div>
-            </div>
+            </RevealItem>
 
             {/* Right — Form */}
-            <div className="lg:col-span-8">
+            <RevealItem className="lg:col-span-8">
               <div className="bg-white border border-black/[0.08] rounded-2xl p-8 md:p-12 shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
                 <h3 className="text-2xl font-black text-[#121214] mb-10 uppercase tracking-tight">Send a Message</h3>
 
@@ -259,9 +262,9 @@ const Contact = () => {
                   </div>
                 </form>
               </div>
-            </div>
+            </RevealItem>
 
-          </div>
+          </RevealGroup>
         </div>
       </section>
     </div>
