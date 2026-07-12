@@ -1,8 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { EASE_OUT } from "@/lib/motionTokens";
 import cohbyLogo from "@/assets/cohby-logo.png";
+
+/* ── Sliding pill that travels between active nav items ── */
+const NavActivePill = () => (
+  <motion.span
+    layoutId="nav-active-pill"
+    className="absolute inset-0 rounded-md bg-white/[0.07] border border-white/[0.08]"
+    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+    aria-hidden="true"
+  />
+);
 
 /* ── Types ── */
 interface DropdownLink { title: string; href: string; sub?: string }
@@ -36,19 +48,29 @@ const NavDropdown = ({ label, links, isActive }: NavDropdownProps) => {
       {/* Trigger — always visible */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex items-center gap-1 px-4 py-2 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] transition-colors cursor-pointer select-none ${
+        className={`relative inline-flex items-center gap-1 px-4 py-2 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] transition-colors cursor-pointer select-none ${
           open || isActive ? "text-rose" : "text-white/70 hover:text-white"
         }`}
       >
-        {label}
-        <ChevronDown
-          className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-        />
+        {isActive && <NavActivePill />}
+        <span className="relative z-10 inline-flex items-center gap-1">
+          {label}
+          <ChevronDown
+            className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          />
+        </span>
       </button>
 
       {/* Dropdown panel */}
+      <AnimatePresence>
       {open && (
-        <div className="absolute left-0 top-full pt-2 z-50 min-w-[280px] animate-fade-in">
+        <motion.div
+          className="absolute left-0 top-full pt-2 z-50 min-w-[280px] origin-top-left"
+          initial={{ opacity: 0, y: -6, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -4, scale: 0.98, transition: { duration: 0.15, ease: "easeOut" } }}
+          transition={{ duration: 0.2, ease: EASE_OUT }}
+        >
           <ul className="grid gap-1 p-4 bg-[rgba(14,16,38,0.96)] backdrop-blur-[48px] border border-white/10 shadow-2xl rounded-2xl">
             {links.map((link) => (
               <li key={link.href}>
@@ -67,8 +89,9 @@ const NavDropdown = ({ label, links, isActive }: NavDropdownProps) => {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -132,9 +155,16 @@ const Navigation = () => {
     : "";
 
   const linkClass = (active: boolean) =>
-    `px-4 py-2 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] transition-colors cursor-pointer ${
+    `relative px-4 py-2 rounded-md text-[11px] font-mono uppercase tracking-[0.2em] transition-colors cursor-pointer ${
       active ? "text-rose" : "text-white/70 hover:text-white"
     }`;
+
+  const NavLinkItem = ({ to, label }: { to: string; label: string }) => (
+    <Link to={to} className={linkClass(isActive(to))}>
+      {isActive(to) && <NavActivePill />}
+      <span className="relative z-10">{label}</span>
+    </Link>
+  );
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
@@ -152,15 +182,15 @@ const Navigation = () => {
 
             {/* Desktop nav */}
             <div className="hidden lg:flex items-center space-x-1">
-              <Link to="/"       className={linkClass(isActive("/"))}>Home</Link>
-              <Link to="/about"  className={linkClass(isActive("/about"))}>About</Link>
+              <NavLinkItem to="/" label="Home" />
+              <NavLinkItem to="/about" label="About" />
 
               <NavDropdown label="Solutions"     links={solutionsLinks}  isActive={isActivePrefix("/solutions") || isActive("/cloud-solutions") || isActive("/data-analysis")} />
               <NavDropdown label="Products"      links={productsLinks}   isActive={isActivePrefix("/products")} />
               <NavDropdown label="AI & Automation" links={aiLinks}       isActive={isActivePrefix("/ai-automation")} />
               <NavDropdown label="Non-Profits"   links={nonprofitLinks}  isActive={isActivePrefix("/non-profits")} />
 
-              <Link to="/contact" className={linkClass(isActive("/contact"))}>Contact</Link>
+              <NavLinkItem to="/contact" label="Contact" />
 
               <Link to="/book-consultation">
                 <Button className="ml-4 glow-button bg-rose text-black hover:bg-white font-mono text-[10px] uppercase tracking-[0.15em] px-6 py-5 rounded-full shadow-lg transition-all duration-300 cursor-pointer">

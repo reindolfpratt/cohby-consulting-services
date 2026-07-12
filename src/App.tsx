@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
+import LiquidGlassBackground from "./components/LiquidGlassBackground";
+import ScrollProgress from "./components/motion/ScrollProgress";
+import RouteTransition from "./components/motion/RouteTransition";
+import CometField from "./components/motion/CometField";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
@@ -35,9 +39,16 @@ const App = () => (
       <BrowserRouter basename="/">
         <div className="flex flex-col min-h-screen">
           <ScrollToTop />
+          <ScrollProgress />
+          {/* Site-wide space scene: satin base + orbs behind, comet overlay above */}
+          <div className="fixed inset-0 z-0 pointer-events-none">
+            <LiquidGlassBackground variant="hero" />
+          </div>
+          <CometField />
           <Navigation />
-          <main className="flex-grow">
-            <Routes>
+          <main className="flex-grow relative z-10">
+            <RouteTransition>
+              <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/solutions" element={<Solutions />} />
@@ -57,7 +68,8 @@ const App = () => (
               <Route path="/thank-you" element={<ThankYou />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
-            </Routes>
+              </Routes>
+            </RouteTransition>
           </main>
           <Footer />
         </div>
